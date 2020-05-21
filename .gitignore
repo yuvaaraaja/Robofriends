@@ -1,3 +1,5 @@
-# Untracked files
-node_modules/
+# Untracked files - build folder
 build/
+
+# Untracked files - node module folder
+node_modules/
