@@ -3,6 +3,8 @@ import CardList from '../components/CardList';
 import SearchBox from '../components//SearchBox';
 import Scroll from '../components//Scroll'
 import './App.css'
+//import { robotlist } from '../components/robots'
+import ErrorBoundary from '../components/ErrorBoundary';
 
 class App extends Component {
 
@@ -14,6 +16,8 @@ class App extends Component {
         };
     }
 
+    //not working as the request to the url https://jsonplaceholder.typicode.com/users 
+    //is not returning any data
     componentDidMount() {
         // console.log("check!");
         fetch('https://jsonplaceholder.typicode.com/users')
@@ -31,15 +35,17 @@ class App extends Component {
             return (robot.name.toLowerCase().includes(searchfield.toLowerCase()));
         })
         if(!robots.length) {
-            return (<h1>LOADING</h1>)
+            return (<h1 className="tc">LOADING..</h1>)
         }
         else {
             return (
                 <div className = 'tc'>
-                    <h1 className = 'f2'>RoboFriends</h1>
+                    <h1 className = 'f1'>RoboFriends</h1>
                     <SearchBox searchChange = {this.onSearchChange} />
                     <Scroll>
-                        <CardList robots = {filteredRobots}/>
+                        <ErrorBoundary>
+                            <CardList robots = {filteredRobots}/>
+                            </ErrorBoundary>
                     </Scroll>
                 </div>
             );
