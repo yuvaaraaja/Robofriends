@@ -16,8 +16,6 @@ class App extends Component {
         };
     }
 
-    //not working as the request to the url https://jsonplaceholder.typicode.com/users 
-    //is not returning any data
     componentDidMount() {
         // console.log("check!");
         fetch('https://jsonplaceholder.typicode.com/users')
